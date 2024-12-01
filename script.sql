@@ -22,6 +22,10 @@ mongosh  --port 20001
 
 rs.status()
 
+--6. Crear una base de datos y una colección
+db.equipos.insertOne({ "nombre": "Tiburones", "entrenador": { "nombre": "Carlos Pérez" } })
+db.equipos.insertOne({ "nombre": "Aguilas", "entrenador": { "nombre": "Andres Torres" } })
+
 --7. Verificar que los datos se han replicado
 db.equipos.find()
 
@@ -45,5 +49,38 @@ mongosh  --port 20002
 
 rs.status();
 
+--10. Detener un nodo
+use admin
+db.shutdownServer()
 
+--11. Verificar el estado de la replicación
+
+mongosh  --port 20002
+
+rs.status();
+
+--12. Eliminar un nodo
+
+rs.remove("localhost:20003")
+
+--13. Verificar el estado de la replicación
+
+
+mongosh  --port 20001
+
+rs.status();
+
+--14. Detener los nodos
+
+use admin
+
+db.shutdownServer()
+
+--15. Eliminar los directorios
+
+rd /s /q c:\mongodb\repset\rs1
+
+rd /s /q c:\mongodb\repset\rs2
+
+rd /s /q c:\mongodb\repset\rs3
 
