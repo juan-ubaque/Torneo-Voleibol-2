@@ -22,7 +22,12 @@ mongosh  --port 20001
 
 rs.status()
 
+--7. Verificar que los datos se han replicado
+db.equipos.find()
 
+--8. Agregar un nuevo nodo
+start mongod --bind_ip localhost --dbpath c:\mongodb\repset\rs3 --port 20004 --replSet myrs
+rs.add("localhost:20004"); // Esto agrega un nuevo nodo en el puerto 20004
   
 --9. Verificar el estado de la replicación
 mongosh  --port 20001
