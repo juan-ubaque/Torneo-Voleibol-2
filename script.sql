@@ -13,9 +13,6 @@ start mongod --bind_ip localhost --dbpath c:\mongodb\repset\rs3 --port 20003 --r
 --3. Conectarse al nodo principal
 rs.initiate()
 
-
-
-
 --4. Agregar los nodos secundarios
 rs.add("localhost:20002")
 rs.add("localhost:20003")
@@ -24,3 +21,24 @@ rs.add("localhost:20003")
 mongosh  --port 20001
 
 rs.status()
+
+
+  
+--9. Verificar el estado de la replicación
+mongosh  --port 20001
+
+rs.status();
+
+
+--10. Detener un nodo
+use admin
+db.shutdownServer()
+
+--11. Verificar el estado de la replicación
+
+mongosh  --port 20002
+
+rs.status();
+
+
+
