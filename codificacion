@@ -1,0 +1,16 @@
+
+--9. Verificar el estado de la replicación
+mongosh  --port 20001
+
+rs.status();
+
+
+--10. Detener un nodo
+use admin
+db.shutdownServer()
+
+--11. Verificar el estado de la replicación
+
+mongosh  --port 20002
+
+rs.status();
