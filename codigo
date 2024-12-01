@@ -1,0 +1,10 @@
+--6. Crear una base de datos y una colección
+db.equipos.insertOne({ "nombre": "Tiburones", "entrenador": { "nombre": "Carlos Pérez" } })
+db.equipos.insertOne({ "nombre": "Aguilas", "entrenador": { "nombre": "Andres Torres" } })
+
+--7. Verificar que los datos se han replicado
+db.equipos.find()
+
+--8. Agregar un nuevo nodo
+start mongod --bind_ip localhost --dbpath c:\mongodb\repset\rs3 --port 20004 --replSet myrs
+rs.add("localhost:20004"); // Esto agrega un nuevo nodo en el puerto 20004
