@@ -98,6 +98,3 @@ db.equipos.find()
 
 // Caso de Prueba 4: Validar el balanceo automático
 sh.status()
-
-
-
