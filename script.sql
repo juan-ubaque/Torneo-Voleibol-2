@@ -84,3 +84,20 @@ rd /s /q c:\mongodb\repset\rs2
 
 rd /s /q c:\mongodb\repset\rs3
 
+// Caso de Prueba 1: Verificar la distribución de datos entre shards
+db.equipos.getShardDistribution()
+sh.splitAt("evento_deportivo.equipos", { "nombre": "M" });
+
+
+// Caso de Prueba 2: Validar el rendimiento de consultas
+db.equipos.find({ "nombre": "Águilas" }).
+
+// Caso de Prueba 3: Verificar alta disponibilidad tras la caída de un shard
+db.equipos.find()
+
+
+// Caso de Prueba 4: Validar el balanceo automático
+sh.status()
+
+
+
